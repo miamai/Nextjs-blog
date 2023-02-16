@@ -1,17 +1,7 @@
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import Typewriter from 'typewriter-effect';
 import { Box, Typography } from '@mui/material';
 
 const HomeSplash = () => {
-  const [isVisible, setIsVisible] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsVisible(false);
-    }, 5000);
-  }, []);
-
   return (
     <Box
       sx={{
@@ -25,10 +15,10 @@ const HomeSplash = () => {
         backgroundImage: 'url(/images/Jiufen_background_img.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        ...(isVisible == false && {
-          display: 'none',
-          transform: 'translate(0px, -753.6px)',
-        }),
+        // ...(isVisible == false && {
+        //   display: 'none',
+        //   transform: 'translate(0px, -753.6px)',
+        // }),
       }}
     >
       <Box
@@ -54,10 +44,10 @@ const HomeSplash = () => {
               strings: ['Hello! This is Mia<span>&#39;</span>s Blog!'],
               autoStart: true,
               loop: true,
+              delay: 75,
             }}
           />
         </Typography>
-        {/* <Image src='/images/' /> */}
       </Box>
     </Box>
   );

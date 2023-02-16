@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react';
 import Link from 'next/link';
-import Typewriter from 'typewriter-effect';
 import { ColorModeContext } from '../styles/ThemeModeProvider';
 import {
   Button,
@@ -16,6 +15,7 @@ import {
   ListItemText,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import NightlightIcon from '@mui/icons-material/Nightlight';
 
@@ -35,10 +35,12 @@ const style = {
   },
   drawer: {
     display: { xs: 'block', sm: 'none' },
+    top: 56,
     '& .MuiDrawer-paper': {
       boxSizing: 'border-box',
+      backgroundColor: 'background.default',
+      opacity: 0.95,
       width: 240,
-      // opacity: 0.95,
       top: 56,
     },
     '& .MuiModal-backdrop': {
@@ -51,8 +53,6 @@ const Header = (props) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { mode, toggleColorMode } = useContext(ColorModeContext);
   const { window } = props;
-
-  console.log('mode', mode);
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
@@ -80,8 +80,7 @@ const Header = (props) => {
     <>
       <AppBar
         component='nav'
-        position='relative'
-        // MUI default
+        position='sticky'
         sx={{ backgroundColor: 'background.default' }}
       >
         <Toolbar>
@@ -92,7 +91,7 @@ const Header = (props) => {
             onClick={handleDrawerToggle}
             sx={{ ml: '-8px', mr: '12px', display: { sm: 'none' } }}
           >
-            <MenuIcon />
+            {mobileOpen ? <CloseIcon /> : <MenuIcon />}
           </IconButton>
           <Typography
             variant='h6'
@@ -117,20 +116,19 @@ const Header = (props) => {
           </Button>
         </Toolbar>
       </AppBar>
-      <Box component='nav'>
-        <Drawer
-          container={container}
-          variant='temporary'
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true,
-          }}
-          sx={style.drawer}
-        >
-          {drawer}
-        </Drawer>
-      </Box>
+
+      <Drawer
+        container={container}
+        variant='temporary'
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{
+          keepMounted: true,
+        }}
+        sx={style.drawer}
+      >
+        {drawer}
+      </Drawer>
     </>
   );
 };
