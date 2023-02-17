@@ -20,7 +20,6 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import NightlightIcon from '@mui/icons-material/Nightlight';
 
 const pages = [
-  { title: 'Blog', link: '/blog' },
   { title: 'Projects', link: '/projects' },
   { title: 'About', link: '/about' },
   { title: 'Code', link: 'https://github.com/miamai' },
@@ -93,17 +92,20 @@ const Header = (props) => {
           >
             {mobileOpen ? <CloseIcon /> : <MenuIcon />}
           </IconButton>
-          <Typography
-            variant='h6'
-            component='div'
-            sx={{
-              flexGrow: 1,
-              display: { xs: 'block', sm: 'block' },
-              color: 'text.primary',
-            }}
-          >
-            Mia's Blog
-          </Typography>
+          <Link href={'/'} passHref legacyBehavior>
+            <Typography
+              variant='h6'
+              component='div'
+              sx={{
+                flexGrow: 1,
+                display: { xs: 'block', sm: 'block' },
+                color: 'text.primary',
+                cursor: 'pointer',
+              }}
+            >
+              Mia's Blog
+            </Typography>
+          </Link>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {pages.map((page, idx) => (
               <Link key={idx} href={`${page.link}`} passHref legacyBehavior>
