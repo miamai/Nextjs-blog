@@ -30,16 +30,17 @@ export default function Tag({ tagData, tag }) {
 
   return (
     <Layout>
-      <Box
-        pt='24px'
-        pb='32px'
-        sx={{ display: 'flex', alignItems: 'center', gap: '8px' }}
-      >
-        <Chip label={`${tag}`} variant='filled' color='primary' />
-        <Typography>{tagData.length}篇文章</Typography>
+      <Box maxWidth='720px' m='0 auto'>
+        <Box
+          pt='24px'
+          pb='32px'
+          sx={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+        >
+          <Chip label={`${tag}`} variant='filled' color='primary' />
+          <Typography>{tagData.length}篇文章</Typography>
+        </Box>
+        <PostList tagData={tagData} tag={tag} />
       </Box>
-
-      <PostList tagData={tagData} tag={tag} />
     </Layout>
   );
 }
