@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { ThemeModeProvider } from '../styles/ThemeModeProvider';
+import { MDXProvider } from '@mdx-js/react';
 
 export default function App({ Component, pageProps }) {
   const [openHomeSplash, setOpenHomeSplash] = useState(true);
@@ -24,15 +25,17 @@ export default function App({ Component, pageProps }) {
   }, []);
 
   return (
-    <ThemeModeProvider>
-      <Head>
-        <meta content='width=device-width, initial-scale=1' name='viewport' />
-      </Head>
-      <Component
-        {...pageProps}
-        open={openHomeSplash}
-        setOpen={setOpenHomeSplash}
-      />
-    </ThemeModeProvider>
+    <MDXProvider>
+      <ThemeModeProvider>
+        <Head>
+          <meta content='width=device-width, initial-scale=1' name='viewport' />
+        </Head>
+        <Component
+          {...pageProps}
+          open={openHomeSplash}
+          setOpen={setOpenHomeSplash}
+        />
+      </ThemeModeProvider>
+    </MDXProvider>
   );
 }
