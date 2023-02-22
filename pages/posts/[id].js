@@ -1,4 +1,5 @@
 import { Typography, Box, Divider } from '@mui/material';
+import { MDXRemote } from 'next-mdx-remote';
 import Layout from '../../components/Layout';
 
 import { getAllPostIds, getPostData } from '../../lib/posts';
@@ -21,6 +22,7 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Post({ postData }) {
+  console.log(postData.mdxSource);
   return (
     <Layout>
       <Box maxWidth='720px' m='0 auto' pt='24px'>
@@ -29,9 +31,13 @@ export default function Post({ postData }) {
           {postData.title}
         </Typography>
         <Divider />
-        <Typography
-          dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
-        />
+        {/* <Typography
+          dangerouslySetInnerHTML={{
+            __html: postData.contentHtml,
+          }}
+        /> */}
+        <MDXRemote compiledSource={postData.mdxSource.compiledSource} />
+        {/* {postData.mdxSource.compiledSource} */}
       </Box>
     </Layout>
   );
