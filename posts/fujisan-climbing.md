@@ -14,8 +14,8 @@ image: '/images/fujisan/火山口背影.jpg'
 
 另外很推薦在登山口買<font color='blue'>**金剛杖**</font>，我買最大的尺寸，在每個山屋都有"燒印"，拿來當登山杖也很方便(下山極度需要用到!)，在登山過程中享受集點的樂趣外，也留下一個珍貴的紀念物!
 
-<img src="/images/fujisan/trailhead-crowd.jpg" alt="登山口人潮" id="img_alt_you_want_to_control">
-<p>12315656</p>
+<!-- <img src="/images/fujisan/trailhead-crowd.jpg" alt="登山口人潮" id="img_alt_you_want_to_control">
+<p>12315656</p> -->
 
 ![登山口人潮](/images/fujisan/trailhead-crowd.jpg '登山口人潮')
 ![登山杖烙印](/images/fujisan/hiking-pole-printed.jpg '登山杖烙印')
