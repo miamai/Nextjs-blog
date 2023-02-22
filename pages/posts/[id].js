@@ -23,15 +23,15 @@ export async function getStaticProps({ params }) {
 export default function Post({ postData }) {
   return (
     <Layout>
-      <Box pt='24px'>
+      <Box maxWidth='720px' m='0 auto' pt='24px'>
         <Typography>{postData.date}</Typography>
         <Typography gutterBottom variant='h4' fontWeight={500}>
           {postData.title}
         </Typography>
         <Divider />
-        <Typography>
-          <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-        </Typography>
+        <Typography
+          dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+        />
       </Box>
     </Layout>
   );

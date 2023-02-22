@@ -1,37 +1,40 @@
-// import Head from 'next/head';
-import Link from 'next/link';
-import Image from 'next/image';
-
 import { Typography, Grid } from '@mui/material';
 import Layout from '../components/Layout';
 import { getSortedPostsData } from '../lib/posts';
+import { getAllTags } from '../lib/tags';
 import HomeIntro from '../components/home/HomeIntro';
 import TagBox from '../components/home/TagBox';
 import HomeSplash from '../components/home/HomeSplash';
 import HomePost from '../components/home/HomePost';
 import Pagination from '../components/home/Pagination';
+import SEO from '../components/seo/SEO';
+import { siteMetaData } from '../components/seo/siteMetaData';
 
 export const POST_PER_PAGE = 6;
 
-export function getStaticProps() {
+export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
+  const tagCount = await getAllTags();
+  const tagLabels = Object.keys(tagCount);
   const initialPosts = allPostsData.slice(0, POST_PER_PAGE);
   const paginations = {
     currentPage: 1,
     totalPages: Math.ceil(allPostsData.length / POST_PER_PAGE),
   };
+
   return {
     props: {
-      allPostsData,
       initialPosts,
       paginations,
+      tagLabels,
     },
   };
 }
 
-export default function Home({ initialPosts, open, paginations }) {
+export default function Home({ open, initialPosts, paginations, tagLabels }) {
   return (
     <>
+      <SEO siteMetaData={siteMetaData} />
       {open ? (
         <HomeSplash />
       ) : (
@@ -43,7 +46,7 @@ export default function Home({ initialPosts, open, paginations }) {
             </Typography>
             <Grid container spacing={2}>
               <Grid item xs={12} md={3}>
-                <TagBox />
+                <TagBox tagLabels={tagLabels} />
               </Grid>
               <HomePost initialPosts={initialPosts} />
             </Grid>

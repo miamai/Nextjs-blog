@@ -1,4 +1,5 @@
 import { getSortedPostsData } from '../lib/posts';
+import { getAllTags } from '../lib/tags';
 import { POST_PER_PAGE } from '.';
 
 import { Typography, Grid } from '@mui/material';
@@ -11,7 +12,6 @@ import TagBox from '../components/home/TagBox';
 export async function getStaticPaths() {
   const allPostsData = getSortedPostsData();
   const totalPages = Math.ceil(allPostsData.length / POST_PER_PAGE);
-
   const paths = Array.from({ length: totalPages }, (_, i) => ({
     params: { page: `page${i + 1}` },
   }));
@@ -24,6 +24,8 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const allPostsData = getSortedPostsData();
+  const tagCount = await getAllTags();
+  const tagLabels = Object.keys(tagCount);
   const pageNumber = parseInt(params.page.split('page')[1]);
   const displayPosts = allPostsData.slice(
     POST_PER_PAGE * (pageNumber - 1),
@@ -38,15 +40,17 @@ export async function getStaticProps({ params }) {
       allPostsData,
       displayPosts,
       paginations,
+      tagLabels,
     },
   };
 }
 
-// getStaticProps
-// PostList
-// index 中也要有PostList，因為getStaticProps不能傳過去
-
-export default function PostPage({ allPostsData, displayPosts, paginations }) {
+export default function PostPage({
+  allPostsData,
+  displayPosts,
+  paginations,
+  tagLabels,
+}) {
   return (
     <>
       <Layout home>
@@ -57,7 +61,7 @@ export default function PostPage({ allPostsData, displayPosts, paginations }) {
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={12} md={3}>
-              <TagBox />
+              <TagBox tagLabels={tagLabels} />
             </Grid>
             <HomePost
               allPostsData={allPostsData}

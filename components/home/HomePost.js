@@ -3,21 +3,21 @@ import Image from 'next/image';
 
 import {
   Box,
+  Button,
   Typography,
   Grid,
   Card,
   CardContent,
   Chip,
-  Button,
 } from '@mui/material';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-const PostList = ({ tagData }) => {
+const HomePost = ({ initialPosts }) => {
   return (
-    <Grid container spacing={2}>
-      {tagData.map(({ id, title, date, tags, image }) => (
-        <Grid item xs={12} key={id}>
-          <Card variant='outlined'>
+    <Grid container item xs={12} md={9} spacing={2}>
+      {initialPosts.map(({ id, title, date, tags, image }) => (
+        <Grid item xs={12} sm={6} key={id}>
+          <Card variant='outlined' sx={{ height: '100%' }}>
             {image && (
               <Box
                 sx={{
@@ -48,7 +48,13 @@ const PostList = ({ tagData }) => {
               <Typography gutterBottom variant='h6'>
                 {date}
               </Typography>
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '10px',
+                }}
+              >
                 {tags.map((tag, idx) => (
                   <Link key={idx} href={`/tags/${tag}`} passHref legacyBehavior>
                     <Chip label={`${tag}`} variant='filled' clickable />
@@ -73,4 +79,4 @@ const PostList = ({ tagData }) => {
   );
 };
 
-export default PostList;
+export default HomePost;

@@ -26,8 +26,6 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Tag({ tagData, tag }) {
-  // console.log(tagData);
-
   return (
     <Layout>
       <Box maxWidth='720px' m='0 auto'>

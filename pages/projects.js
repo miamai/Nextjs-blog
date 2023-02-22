@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { Typography, Box, Divider, Card, CardContent } from '@mui/material';
 import LaunchIcon from '@mui/icons-material/Launch';
 import Layout from '../components/Layout';
+import SEO from '../components/seo/SEO';
+import { siteMetaData } from '../components/seo/siteMetaData';
 
 const Projects = () => {
   return (

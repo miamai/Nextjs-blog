@@ -1,5 +1,5 @@
 ---
-title: 'Anything Goes with Emma Chamberlain'
+title: 'Anything Goes with Emma Chamberlain : 聊如何看待過去、現在、未來'
 date: '2023-02-11'
 tags: ['Podcast', '隨筆']
 image: '/images/podcast/Anything Goes with Emma Chamberlain.jpg'

@@ -1,5 +1,9 @@
 import { useState, useMemo, createContext } from 'react';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {
+  createTheme,
+  responsiveFontSizes,
+  ThemeProvider,
+} from '@mui/material/styles';
 
 export const ColorModeContext = createContext({
   toggleColorMode: () => {},
@@ -20,7 +24,7 @@ export const ThemeModeProvider = (props) => {
     [mode]
   );
 
-  const theme = useMemo(
+  let theme = useMemo(
     () =>
       createTheme({
         palette: {
@@ -29,13 +33,17 @@ export const ThemeModeProvider = (props) => {
             ? {
                 background: {
                   default: '#fff',
-                  paper: '',
+                },
+                custom: {
+                  paper: '#E2E8F0',
                 },
               }
             : {
                 background: {
                   default: '#121212',
-                  paper: '',
+                },
+                custom: {
+                  paper: '#2D3748',
                 },
               }),
           // ...(mode === 'light'
@@ -84,7 +92,8 @@ export const ThemeModeProvider = (props) => {
             styleOverrides: {
               root: {
                 boxShadow:
-                  '0px 2px 4px -1px rgb(0 0 0 / 10%), 0px 4px 5px 0px rgb(0 0 0 / 2%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
+                  // '0px 2px 4px -1px rgb(0 0 0 / 10%), 0px 4px 5px 0px rgb(0 0 0 / 2%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
+                  '0 4px 2px -2px rgb(0 0 0 / 15%)',
               },
             },
           },
@@ -94,7 +103,7 @@ export const ThemeModeProvider = (props) => {
                 ':hover': {
                   ...(mode === 'light'
                     ? {
-                        boxShadow: '0px 4px 20px rgb(0 0 0 / 10%)',
+                        boxShadow: '0px 4px 20px rgb(0 0 0 / 20%)',
                         border: '1px solid #1976d2',
                       }
                     : {
@@ -109,6 +118,8 @@ export const ThemeModeProvider = (props) => {
       }),
     [mode]
   );
+
+  theme = responsiveFontSizes(theme);
 
   return (
     <ColorModeContext.Provider value={colorMode}>

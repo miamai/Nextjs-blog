@@ -2,22 +2,23 @@
 title: 'JavaScript 30 Days(上)'
 date: '2022-11-03'
 tags: ['程式']
-image: '/images/projects/js30-img.PNG'
+image: '/images/projects/js30.PNG'
 ---
 
-#JavaScript 30 Days
+# JavaScript 30 Days
+
 更加熟悉 JS 及練習寫 Readme，主要寫下自己還不懂的點
 
 > [JavaScript30](https://javascript30.com/)
 
-##01 - JavaScript Drum Kit
+## 01 - JavaScript Drum Kit
 
 - `.play()` : 嘗試撥放媒體，返回 promise
 - `audio.currentTime = 0` : 讓播放進度回到 0，在 keydown 事件時，就能重頭撥放，在長一點的音訊中可以感受差異!
 - script defer 重要性
   - 在開始犯了大錯，沒加入 defer，請求 js 先跑，但 DOM 還沒讀完先執行 script，所以 script 一開始.key 是無法讀到(不存在的)，但打開畫面有渲染出來，代表 DOM 已建構好，在執行 keydown 動作時，audio 是存在且可讀
 
-##02 - JS and CSS Clock
+## 02 - JS and CSS Clock
 
 - `new Date().getTime()` : 返回 Date 物件的時間數值
 - Tips
@@ -28,7 +29,7 @@ image: '/images/projects/js30-img.PNG'
   ```
   - `setInterval()` : 重複執行函式呼叫，時間設 1000ms
 
-##03 - CSS Variables
+## 03 - CSS Variables
 
 - `document.documentElement.style.setProperty(propertyName, value, priority)`
 
@@ -36,15 +37,15 @@ image: '/images/projects/js30-img.PNG'
 
 - input element 設置 name 指定變更的 Css variables；data-sizing 指定 variables 單位(px)
 
-##04 - Array Cardio Day 1
+## 04 - Array Cardio Day 1
 
 - 熟悉 Array 方法
 
-##05 - Flex Panel Gallery
+## 05 - Flex Panel Gallery
 
 - `e.propertyName` : 監聽 transitionend 觸發時，搭配 e.propertyName 進行下一個有條件的 classList.toggle()
 
-##06 - Type Ahead
+## 06 - Type Ahead
 
 - Promise
 
@@ -70,11 +71,11 @@ fetch(endpoint)
   - match(regex) 返回符合的值
   - replace(regex, replacingWord) 返回替代後的值
 
-##07 - Array Cardio Day 2
+## 07 - Array Cardio Day 2
 
 - 熟悉 Array 方法
 
-##08 - Fun with HTML5 Canvas
+## 08 - Fun with HTML5 Canvas
 
 - <canvas>是一個可以使用 JS 來繪製 2D 圖形的 HTML 元素
 - `beginPath()`：新建一條路徑
@@ -95,11 +96,11 @@ function draw(e) {
   /***/
 ```
 
-##09 - Dev Tools Domination
+## 09 - Dev Tools Domination
 
 - console 調試技巧
 
-##10 - Hold Shift and Check Checkboxes
+## 10 - Hold Shift and Check Checkboxes
 
 - `lastChecked` : 標記範圍
 - `inBetween` : 初始值為 false，按下 shift 鍵並同時選中某元素，遍歷所有選項，遇到`input === lastChecked || input ===this`則標記相反，中間遍歷選項`inBetween = true`
@@ -122,7 +123,7 @@ function handleCheck(e) {
 }
 ```
 
-##11 - Custom Video Player
+## 11 - Custom Video Player
 
 - video node 操作
 
@@ -176,7 +177,7 @@ ranges.forEach((range) => range.addEventListener('change', handleRangeUpdate));
 - 操作進度條
   - `progressBar.style.flexBasis` : 利用`flex-basis`改變進度條顏色占比 -`offsetX`, `offsetWidth` : 透過滑鼠事件對象`offsetX`來找到位置相對於元素的水平偏移，來計算進度的百分比
 
-##12 - Key Sequence Detection
+## 12 - Key Sequence Detection
 
 - `splice()`:截取數組，保持最大長度為 secretCode
 
@@ -185,7 +186,7 @@ ranges.forEach((range) => range.addEventListener('change', handleRangeUpdate));
 pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
 ```
 
-##13 - Slide in on Scroll
+## 13 - Slide in on Scroll
 
 - `debounce` : 降低互動事件頻繁發生 [延伸:debounce & throttle 差異](https://ithelp.ithome.com.tw/articles/10222749)
 - 涉及頁面尺寸屬性
