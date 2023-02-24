@@ -1,0 +1,195 @@
+---
+title: 'JavaScript 30 Days(上)'
+date: '2022-11-03'
+tags: ['程式']
+image: '/images/projects/js30.PNG'
+---
+
+# JavaScript 30 Days
+
+更加熟悉 JS 及練習寫 Readme，主要寫下自己還不懂的點
+
+> [JavaScript30](https://javascript30.com/)
+
+## 01 - JavaScript Drum Kit
+
+- `.play()` : 嘗試撥放媒體，返回 promise
+- `audio.currentTime = 0` : 讓播放進度回到 0，在 keydown 事件時，就能重頭撥放，在長一點的音訊中可以感受差異!
+- script defer 重要性
+  - 在開始犯了大錯，沒加入 defer，請求 js 先跑，但 DOM 還沒讀完先執行 script，所以 script 一開始.key 是無法讀到(不存在的)，但打開畫面有渲染出來，代表 DOM 已建構好，在執行 keydown 動作時，audio 是存在且可讀
+
+## 02 - JS and CSS Clock
+
+- `new Date().getTime()` : 返回 Date 物件的時間數值
+- Tips
+  - 設置時針分針秒針旋轉角度，跟著時間數值走
+  ```javasript
+  const secDegrees = (sec / 60) * 360 + 90;
+  secHand.style.transform = `rotate(${secDegrees}deg)`
+  ```
+  - `setInterval()` : 重複執行函式呼叫，時間設 1000ms
+
+## 03 - CSS Variables
+
+- `document.documentElement.style.setProperty(propertyName, value, priority)`
+
+-Tips
+
+- input element 設置 name 指定變更的 Css variables；data-sizing 指定 variables 單位(px)
+
+## 04 - Array Cardio Day 1
+
+- 熟悉 Array 方法
+
+## 05 - Flex Panel Gallery
+
+- `e.propertyName` : 監聽 transitionend 觸發時，搭配 e.propertyName 進行下一個有條件的 classList.toggle()
+
+## 06 - Type Ahead
+
+- Promise
+
+  - `fetch()`
+  - `then()`
+  - `json()`
+
+- Array
+
+  - `push()`
+  - spread syntax
+
+運用 fetch()發送 HTTP 請求: i.獲取返回 promise 對象 ii.解析 json 數據 iii.存入數據` 。 利用`push`將data存入cities數組中，原本取出的 data 是數組，直接`cities.push(data)`會 nested，因此將 data spread 後再存入
+
+```javascript
+fetch(endpoint)
+  .then((blob) => blob.json())
+  .then((data) => cities.push(...data));
+```
+
+- RegExp 正規表達式物件 : 可以用來做文字搜尋、比對、轉換等
+  - gi : 全域比對且忽略大小寫
+  - match(regex) 返回符合的值
+  - replace(regex, replacingWord) 返回替代後的值
+
+## 07 - Array Cardio Day 2
+
+- 熟悉 Array 方法
+
+## 08 - Fun with HTML5 Canvas
+
+- canvas 是一個可以使用 JS 來繪製 2D 圖形的 HTML 元素
+- `beginPath()`：新建一條路徑
+- `stroke()`：繪製輪廓
+- `moveTo()`：（下次）繪製的起點
+- `lineTo()`：路徑終點
+
+在繪製過程中，線是由點所連起來的，但在初始狀態 lastX=0 lastY=0 下起始相同，因此滑動過程會變為扇形，因此設定`[lastX, lastY] = [e.offsetX, e.offsetY];`讓`lastX`和 `offsetX` 的值相等，呈現繪製一個個點，看起來線才是流動的
+
+```javascript
+function draw(e) {
+  /***/
+   ctx.beginPath();
+   ctx.moveTo(lastX, lastY);
+   ctx.lineTo(e.offsetX, e.offsetY);
+   ctx.stroke();
+   [lastX, lastY] = [e.offsetX, e.offsetY];
+  /***/
+```
+
+## 09 - Dev Tools Domination
+
+- console 調試技巧
+
+## 10 - Hold Shift and Check Checkboxes
+
+- `lastChecked` : 標記範圍
+- `inBetween` : 初始值為 false，按下 shift 鍵並同時選中某元素，遍歷所有選項，遇到`input === lastChecked || input ===this`則標記相反，中間遍歷選項`inBetween = true`
+
+```javascript
+let lastChecked;
+function handleCheck(e) {
+  let inBetween = false;
+  if (e.shiftKey && this.checked) {
+    checkboxes.forEach((checkbox) => {
+      if (checkbox === this || checkbox === lastChecked) {
+        inBetween = !inBetween;
+      }
+      if (inBetween) {
+        checkbox.checked = true;
+      }
+    });
+  }
+  lastChecked = this;
+}
+```
+
+## 11 - Custom Video Player
+
+- video node 操作
+
+  - `video.pause`:影片是否暫停
+  - `video.play()`:播放影片
+  - `video.pause()`:暫停影片
+
+- `toggle.textContent` : 改變播放圖案
+
+```javascript
+function updateButton() {
+  const icon = this.paused ? '►' : '❚ ❚';
+  toggle.textContent = icon;
+}
+video.addEventListener('play', updateButton);
+video.addEventListener('pause', updateButton);
+```
+
+- input , video 屬性改變音量和播放速度
+  input 分別有一個`volume`和`playbackRate`的 name 屬性，如此取名是因為對應 video 音量和播放速度的屬性名，這樣可以監聽 input 元素的`change`事件，改變影片屬性
+
+```html
+<input
+  type="range"
+  name="volume"
+  class="player__slider"
+  min="0"
+  max="1"
+  step="0.05"
+  value="1"
+/>
+<input
+  type="range"
+  name="playbackRate"
+  class="player__slider"
+  min="0.5"
+  max="2"
+  step="0.1"
+  value="1"
+/>
+```
+
+```javascript
+function handleRangeUpdate() {
+  video[this.name] = this.value;
+}
+
+ranges.forEach((range) => range.addEventListener('change', handleRangeUpdate));
+```
+
+- 操作進度條
+  - `progressBar.style.flexBasis` : 利用`flex-basis`改變進度條顏色占比 -`offsetX`, `offsetWidth` : 透過滑鼠事件對象`offsetX`來找到位置相對於元素的水平偏移，來計算進度的百分比
+
+## 12 - Key Sequence Detection
+
+- `splice()`:截取數組，保持最大長度為 secretCode
+
+```javascript
+//若start為負，從最後一個元素往前數(-1開始)
+pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+```
+
+## 13 - Slide in on Scroll
+
+- `debounce` : 降低互動事件頻繁發生 [延伸:debounce & throttle 差異](https://ithelp.ithome.com.tw/articles/10222749)
+- 涉及頁面尺寸屬性
+  - `window.scrollY` : 頁面從頂部開始滾動過後的像素值
+  - `window.innerHeight`:viewport 部分的高度
+  - `element.offsetTop` : 當前元素頂部相對於 offsetParent 元素頂部的距離
