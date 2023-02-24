@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const tagData = getFilteredTagsData(params.tag);
+  const tagData = await getFilteredTagsData(params.tag);
 
   return {
     props: { tagData, tag: params.tag },

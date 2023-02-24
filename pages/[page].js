@@ -1,4 +1,4 @@
-import { getSortedPostsData } from '../lib/posts';
+import { getSortedPosts } from '../lib/posts';
 import { getAllTags } from '../lib/tags';
 import { POST_PER_PAGE } from '.';
 
@@ -10,7 +10,7 @@ import Pagination from '../components/home/Pagination';
 import TagBox from '../components/home/TagBox';
 
 export async function getStaticPaths() {
-  const allPostsData = getSortedPostsData();
+  const allPostsData = getSortedPosts();
   const totalPages = Math.ceil(allPostsData.length / POST_PER_PAGE);
   const paths = Array.from({ length: totalPages }, (_, i) => ({
     params: { page: `page${i + 1}` },
@@ -23,7 +23,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const allPostsData = getSortedPostsData();
+  const allPostsData = getSortedPosts();
   const tagCount = await getAllTags();
   const tagLabels = Object.keys(tagCount);
   const pageNumber = parseInt(params.page.split('page')[1]);

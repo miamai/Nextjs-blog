@@ -1,10 +1,22 @@
+import { MDXRemote } from 'next-mdx-remote';
 import { Typography, Box, Divider } from '@mui/material';
 import Layout from '../../components/Layout';
+import { getPostIds, getPostData } from '../../lib/posts';
 
-import { getAllPostIds, getPostData } from '../../lib/posts';
+const ResponsiveImage = (props) => (
+  <img
+    src={props.src}
+    alt={props.alt}
+    style={{ width: '100%', height: 'auto' }}
+  />
+);
+
+const components = {
+  img: ResponsiveImage,
+};
 
 export async function getStaticPaths() {
-  const paths = getAllPostIds();
+  const paths = getPostIds();
   return {
     paths,
     fallback: false,
@@ -29,9 +41,12 @@ export default function Post({ postData }) {
           {postData.title}
         </Typography>
         <Divider />
-        <Typography
-          dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
-        />
+        <Typography component={'div'}>
+          <MDXRemote
+            compiledSource={postData.mdxContent}
+            components={components}
+          />
+        </Typography>
       </Box>
     </Layout>
   );

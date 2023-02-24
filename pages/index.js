@@ -1,6 +1,6 @@
 import { Typography, Grid } from '@mui/material';
 import Layout from '../components/Layout';
-import { getSortedPostsData } from '../lib/posts';
+import { getSortedPosts } from '../lib/posts';
 import { getAllTags } from '../lib/tags';
 import HomeIntro from '../components/home/HomeIntro';
 import TagBox from '../components/home/TagBox';
@@ -13,7 +13,7 @@ import { siteMetaData } from '../components/seo/siteMetaData';
 export const POST_PER_PAGE = 6;
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
+  const allPostsData = getSortedPosts();
   const tagCount = await getAllTags();
   const tagLabels = Object.keys(tagCount);
   const initialPosts = allPostsData.slice(0, POST_PER_PAGE);

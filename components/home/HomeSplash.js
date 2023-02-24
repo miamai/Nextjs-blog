@@ -26,6 +26,8 @@ const HomeSplash = () => {
           height: '100%',
           justifyContent: 'center',
           alignItems: 'center',
+          pl: '16px',
+          pr: '16px',
         }}
       >
         <Typography
