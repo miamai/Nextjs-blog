@@ -8,6 +8,8 @@ import HomeIntro from '../components/home/HomeIntro';
 import Layout from '../components/Layout';
 import Pagination from '../components/home/Pagination';
 import TagBox from '../components/home/TagBox';
+import SEO from '../components/seo/SEO';
+import { defaultSiteMeta } from '../components/seo/siteMetaData';
 
 export async function getStaticPaths() {
   const allPostsData = getSortedPosts();
@@ -53,6 +55,7 @@ export default function PostPage({
 }) {
   return (
     <>
+      <SEO {...defaultSiteMeta} />
       <Layout home>
         <HomeIntro />
         <section>

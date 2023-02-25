@@ -8,7 +8,7 @@ import HomeSplash from '../components/home/HomeSplash';
 import HomePost from '../components/home/HomePost';
 import Pagination from '../components/home/Pagination';
 import SEO from '../components/seo/SEO';
-import { siteMetaData } from '../components/seo/siteMetaData';
+import { defaultSiteMeta } from '../components/seo/siteMetaData';
 
 export const POST_PER_PAGE = 6;
 
@@ -34,7 +34,7 @@ export async function getStaticProps() {
 export default function Home({ open, initialPosts, paginations, tagLabels }) {
   return (
     <>
-      <SEO siteMetaData={siteMetaData} />
+      <SEO {...defaultSiteMeta} />
       {open ? (
         <HomeSplash />
       ) : (

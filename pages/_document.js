@@ -17,6 +17,10 @@ export default function Document() {
           sizes='16x16'
           href='/favicon-16x16.png'
         />
+        <link
+          rel='stylesheet'
+          href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/github-dark.min.css'
+        ></link>
       </Head>
       <body style={{ margin: 0, padding: 0 }}>
         <Main />

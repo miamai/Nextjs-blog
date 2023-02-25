@@ -36,6 +36,8 @@ export const ThemeModeProvider = (props) => {
                 },
                 custom: {
                   paper: '#E2E8F0',
+                  textPink: '#d63384',
+                  textGrey: '#757575',
                 },
               }
             : {
@@ -44,6 +46,8 @@ export const ThemeModeProvider = (props) => {
                 },
                 custom: {
                   paper: '#2D3748',
+                  textPink: '#e270a8',
+                  textGrey: '#bdbdbd',
                 },
               }),
           // ...(mode === 'light'

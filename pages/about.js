@@ -5,6 +5,8 @@ import { remark } from 'remark';
 import html from 'remark-html';
 import { Typography, Box, Divider } from '@mui/material';
 import Layout from '../components/Layout';
+import SEO from '../components/seo/SEO';
+import { defaultSiteMeta } from '../components/seo/siteMetaData';
 
 async function getAboutData() {
   const filePath = path.join(process.cwd(), 'about.md');
@@ -32,17 +34,20 @@ export async function getStaticProps() {
 
 const About = ({ aboutFile }) => {
   return (
-    <Layout>
-      <Box maxWidth='720px' m='0 auto'>
-        <Typography variant='h4' pt='24px' pb='32px' fontWeight={500}>
-          About
-        </Typography>
-        <Divider />
-        <Typography
-          dangerouslySetInnerHTML={{ __html: aboutFile.contentHtml }}
-        />
-      </Box>
-    </Layout>
+    <>
+      <SEO {...defaultSiteMeta} title='About|Mia&#39;s Blog' />
+      <Layout>
+        <Box maxWidth='720px' m='0 auto'>
+          <Typography variant='h4' pt='24px' pb='32px' fontWeight={500}>
+            About
+          </Typography>
+          <Divider />
+          <Typography
+            dangerouslySetInnerHTML={{ __html: aboutFile.contentHtml }}
+          />
+        </Box>
+      </Layout>
+    </>
   );
 };
 
