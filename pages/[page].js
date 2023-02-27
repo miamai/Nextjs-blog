@@ -6,10 +6,9 @@ import { Typography, Grid } from '@mui/material';
 import HomePost from '../components/home/HomePost';
 import HomeIntro from '../components/home/HomeIntro';
 import Layout from '../components/Layout';
-import Pagination from '../components/home/Pagination';
+import Pagination from '../components/pagination/Pagination';
 import TagBox from '../components/home/TagBox';
-import SEO from '../components/seo/SEO';
-import { defaultSiteMeta } from '../components/seo/siteMetaData';
+import SEO, { defaultSiteMeta } from '../components/SEO';
 
 export async function getStaticPaths() {
   const allPostsData = getSortedPosts();
@@ -39,7 +38,6 @@ export async function getStaticProps({ params }) {
   };
   return {
     props: {
-      allPostsData,
       displayPosts,
       paginations,
       tagLabels,
@@ -47,12 +45,7 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default function PostPage({
-  allPostsData,
-  displayPosts,
-  paginations,
-  tagLabels,
-}) {
+export default function PostPage({ displayPosts, paginations, tagLabels }) {
   return (
     <>
       <SEO {...defaultSiteMeta} />
@@ -60,18 +53,13 @@ export default function PostPage({
         <HomeIntro />
         <section>
           <Typography variant='h4' pt='24px' pb='32px'>
-            Posts
+            文章列表
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={12} md={3}>
               <TagBox tagLabels={tagLabels} />
             </Grid>
-            <HomePost
-              allPostsData={allPostsData}
-              initialPosts={displayPosts}
-              paginations={paginations}
-              title='All Posts'
-            />
+            <HomePost initialPosts={displayPosts} title='All Posts' />
           </Grid>
           {paginations.totalPages > 1 && (
             <Pagination paginations={paginations} />

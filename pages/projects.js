@@ -1,24 +1,22 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { Typography, Box, Divider, Card, CardContent } from '@mui/material';
 import LaunchIcon from '@mui/icons-material/Launch';
 import Layout from '../components/Layout';
-import SEO from '../components/seo/SEO';
-import { defaultSiteMeta } from '../components/seo/siteMetaData';
+import SEO, { defaultSiteMeta } from '../components/SEO';
 
 const Projects = () => {
   return (
     <>
       <SEO
         {...defaultSiteMeta}
-        title='Projects|Mia&#39;s Blog'
+        title='作品 | Mia Blog'
         ogImage='/images/projects/crypto_caculator_og_img.PNG'
       />
       <Layout>
         <Box maxWidth='720px' m='0 auto'>
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <Typography variant='h4' pt='24px' pb='32px' fontWeight={500}>
-              Projects
+              作品
             </Typography>
             <Divider />
             <Box
@@ -47,7 +45,10 @@ const Projects = () => {
                     position: 'relative',
                   }}
                 >
-                  <a href='https://github.com/miamai' target='_blank'>
+                  <a
+                    href='https://crypto-profit-web.netlify.app/'
+                    target='_blank'
+                  >
                     <Image
                       src='/images/projects/crypto_caculator_og_img.PNG'
                       alt='crypto_caculator_og_img'
@@ -69,10 +70,10 @@ const Projects = () => {
               >
                 <Card sx={{ bgcolor: 'custom.paper' }}>
                   <CardContent>
-                    <Link
-                      href='https://github.com/miamai'
-                      passHref
-                      legacyBehavior
+                    <a
+                      href='https://crypto-profit-web.netlify.app/'
+                      target='_blank'
+                      style={{ textDecoration: 'none' }}
                     >
                       <Typography
                         gutterBottom
@@ -83,6 +84,7 @@ const Projects = () => {
                           display: 'flex',
                           gap: '12px',
                           alignItems: 'center',
+                          color: 'text.primary',
                           '&:hover': {
                             color: 'primary.main',
                             cursor: 'pointer',
@@ -92,7 +94,7 @@ const Projects = () => {
                         CRYPTO PROFITS
                         <LaunchIcon fontSize='12px' />
                       </Typography>
-                    </Link>
+                    </a>
 
                     <Typography>
                       使用API及React製作一個虛擬貨幣計算web
