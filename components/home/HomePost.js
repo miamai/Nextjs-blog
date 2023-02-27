@@ -15,9 +15,9 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 const HomePost = ({ initialPosts }) => {
   return (
     <Grid container item xs={12} md={9} spacing={2}>
-      {initialPosts.map(({ id, title, date, tags, image }) => (
+      {initialPosts.map(({ id, title, date, tags, image, excerpt }) => (
         <Grid item xs={12} sm={6} key={id}>
-          <Card variant='outlined' sx={{ height: '100%' }}>
+          <Card variant='outlined' sx={{ height: '100%' }} data-aos='fade-up'>
             {image && (
               <Box
                 sx={{
@@ -61,7 +61,16 @@ const HomePost = ({ initialPosts }) => {
                   </Link>
                 ))}
               </Box>
-
+              <Typography
+                color='custom.textGray'
+                sx={{
+                  '&.MuiTypography-root': {
+                    fontSize: '14px',
+                  },
+                  pt: '16px',
+                  pb: '16px',
+                }}
+              >{`${excerpt} ...`}</Typography>
               <Link href={`/posts/${id}`} passHref legacyBehavior>
                 <Button
                   size='small'

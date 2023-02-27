@@ -15,7 +15,7 @@ export default function Layout({ children, home }) {
     <Box
       sx={{
         maxWidth: '1200px',
-        minHeight: '720px',
+        minHeight: '100vh',
         m: '0 auto',
         display: 'flex',
         flexDirection: 'column',

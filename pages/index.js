@@ -6,9 +6,8 @@ import HomeIntro from '../components/home/HomeIntro';
 import TagBox from '../components/home/TagBox';
 import HomeSplash from '../components/home/HomeSplash';
 import HomePost from '../components/home/HomePost';
-import Pagination from '../components/home/Pagination';
-import SEO from '../components/seo/SEO';
-import { defaultSiteMeta } from '../components/seo/siteMetaData';
+import Pagination from '../components/pagination/Pagination';
+import SEO, { defaultSiteMeta } from '../components/SEO';
 
 export const POST_PER_PAGE = 6;
 
@@ -42,7 +41,7 @@ export default function Home({ open, initialPosts, paginations, tagLabels }) {
           <HomeIntro />
           <section>
             <Typography variant='h4' pt='24px' pb='32px'>
-              Posts
+              文章列表
             </Typography>
             <Grid container spacing={2}>
               <Grid item xs={12} md={3}>

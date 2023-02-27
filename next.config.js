@@ -1,12 +1,5 @@
-// import rehypeHighlight from 'rehype-highlight';
-// const rehypeHighlight = require('rehype-highlight');
-
 const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
-  // options: {
-  //   rehypePlugins: [rehypeHighlight],
-  //   providerImportSource: '@mdx-js/react',
-  // },
 });
 
 const nextConfig = {

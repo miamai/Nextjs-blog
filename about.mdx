@@ -1,7 +1,9 @@
 ### 網站架構
 
 這是以 Next js 寫成的部落格，並用 Vercel 架站!
-用 gray-matter 解析 YAML 格式的 front-matter 後，remark 插件再來解析 markdown，形成 HTML 文章。
+用 gray-matter 解析 YAML 格式的 front-matter 後，MDX Remote 插件再來解析 : `serialize`會返回 MDX 字串，在 server-side 運行，傳至`<MDXRemote />`，`<MDXRemote />`則是在 client-side 運行，解析呈現到網頁上。
+
+[文件 : Next MDX Remote](https://github.com/hashicorp/next-mdx-remote)
 
 ### 檔案規劃
 

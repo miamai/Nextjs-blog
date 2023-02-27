@@ -1,25 +1,22 @@
 import fs from 'fs';
 import path from 'path';
-import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
+import rehypeHighlight from 'rehype-highlight';
+import { serialize } from 'next-mdx-remote/serialize';
+import { MDXRemote } from 'next-mdx-remote';
 import { Typography, Box, Divider } from '@mui/material';
 import Layout from '../components/Layout';
-import SEO from '../components/seo/SEO';
-import { defaultSiteMeta } from '../components/seo/siteMetaData';
+import SEO, { defaultSiteMeta } from '../components/SEO';
 
 async function getAboutData() {
-  const filePath = path.join(process.cwd(), 'about.md');
+  const filePath = path.join(process.cwd(), 'about.mdx');
   const fileContents = fs.readFileSync(filePath, 'utf8');
-  const matterResult = matter(fileContents);
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content);
-  const contentHtml = processedContent.toString();
+  const mdxSource = await serialize(fileContents, {
+    mdxOptions: { rehypePlugins: [rehypeHighlight] },
+  });
+  const mdxContent = mdxSource.compiledSource;
 
   return {
-    contentHtml,
-    ...matterResult.data,
+    mdxContent,
   };
 }
 
@@ -35,16 +32,16 @@ export async function getStaticProps() {
 const About = ({ aboutFile }) => {
   return (
     <>
-      <SEO {...defaultSiteMeta} title='About|Mia&#39;s Blog' />
+      <SEO {...defaultSiteMeta} title='本站介紹 | Mia Blog' />
       <Layout>
         <Box maxWidth='720px' m='0 auto'>
           <Typography variant='h4' pt='24px' pb='32px' fontWeight={500}>
             About
           </Typography>
           <Divider />
-          <Typography
-            dangerouslySetInnerHTML={{ __html: aboutFile.contentHtml }}
-          />
+          <Typography component={'div'}>
+            <MDXRemote compiledSource={aboutFile.mdxContent} />
+          </Typography>
         </Box>
       </Layout>
     </>

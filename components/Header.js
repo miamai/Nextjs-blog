@@ -20,9 +20,9 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import NightlightIcon from '@mui/icons-material/Nightlight';
 
 const pages = [
-  { title: 'Projects', link: '/projects' },
-  { title: 'About', link: '/about' },
-  { title: 'Code', link: 'https://github.com/miamai' },
+  { title: '作品', link: '/projects' },
+  { title: '本站介紹', link: '/about' },
+  { title: 'Code', link: 'https://github.com/miamai/Nextjs-blog' },
 ];
 
 const style = {

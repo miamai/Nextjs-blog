@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
-import { Box, Typography } from '@mui/material';
+import { Box, Card, CardContent, Typography } from '@mui/material';
+
 const HomeIntro = () => {
   const style = {
     container: {
@@ -24,12 +25,28 @@ const HomeIntro = () => {
       p: '8px',
       m: '8px',
     },
+    introBox: {
+      width: ['100%', '30%'],
+      margin: 'auto 0',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: ['24px', null],
+    },
     imageBox: {
       borderRadius: '100px',
       position: 'relative',
       overflow: 'hidden',
-      height: '180px',
-      width: '180px',
+      height: '150px',
+      width: '150px',
+      zIndex: '100',
+      top: [null, '-100px'],
+    },
+    card: {
+      bgcolor: 'custom.paper',
+      pt: [null, '60px'],
+      position: [null, 'absolute'],
+      width: '100%',
     },
   };
 
@@ -52,7 +69,7 @@ const HomeIntro = () => {
           </Typography>
         </Box>
       </Box>
-      <Box sx={{ m: '0 auto' }}>
+      <Box sx={style.introBox} data-aos='fade-up'>
         <Box component={'div'} sx={style.imageBox}>
           <Image
             priority={true}
@@ -62,9 +79,23 @@ const HomeIntro = () => {
             objectFit='cover'
           />
         </Box>
-        <Typography sx={{ textAlign: 'center', pt: '8px' }}>
-          個人簡介...
-        </Typography>
+        <Card sx={style.card}>
+          <CardContent>
+            <Typography
+              color='custom.textGray'
+              sx={{
+                '&.MuiTypography-root': {
+                  fontSize: '14px',
+                },
+              }}
+            >
+              哈囉!我是Mia Mai👋
+              從2022年9月開始學習前端，慢慢有了看文檔的樂趣，希望有朝打通任督二脈。
+              <br />
+              更多關於我的學經歷在resume中!
+            </Typography>
+          </CardContent>
+        </Card>
       </Box>
     </Box>
   );

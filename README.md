@@ -1,40 +1,42 @@
-# Mia's Homepage
+# Nextjs Blog
 
-## Project structure
+這是以 Next js 寫成的部落格，並用 Vercel 架站!
+用 gray-matter 解析 YAML 格式的 front-matter 後，MDX Remote 插件再來解析 : `serialize`會返回 MDX 字串，在 server-side 運行，傳至`<MDXRemote />`，`<MDXRemote />`則是在 client-side 運行，解析呈現到網頁上。
+
+[文件 : Next MDX Remote](https://github.com/hashicorp/next-mdx-remote)
+
+### Project structure
 
 ```
-$PROJECT_ROOT
+$ROOT
 │   # Page files
 ├── pages
-│   # React component files
+│   # React components
 ├── components
-│   # Non-react modules
+│   # Data fetching hooks
 ├── lib
+│   # Markdown
+├── posts
+│   # Styling
+├── styles
 │   # Static files for images
 └── public
+
 ```
 
-Araay.from 運用
-https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+components 檔案中的 Seo.js 負責 html head 中的 title, og 等相關資料處理。
 
-// 產生數值序列
-// 因為陣列中的每個位置都會被初始化為 `undefined`，
-// 下方 `v` 會是 `undefined`
-Array.from({length: 5}, (v, i) => i);
-// [0, 1, 2, 3, 4]
+### Blog Path
 
---Dynamic Route
-重要: getStaticPaths!! If a page has Dynamic Routes and uses getStaticProps, it needs to define a list of paths to be statically generated.
+```
+$INDEX
+├── `/[page]`
+│
+├── `/projects`
+│
+├── `/posts/[id]` - 有 data hooks
+│
+└── `/tags/[tag]` - 有 data hooks
+```
 
-https://nextjs.org/docs/routing/dynamic-routes
-
-why the path is '/2' not 'page:2', the params: { page: '2' } look like this?
-In Next.js, when you define a dynamic route with a parameter, the value of the parameter is passed as a prop to the page component via the context object. In this case, the page parameter is defined in the file name of the page component, as [page].js.
-
-So, for a page at the path /2, the value of the page parameter would be '2' and would be passed to the page component via the context object. That's why the params object in the getStaticPaths function is set to { page: '2' }, without the "page" key.
-
-However, if you want to use a different format for the path, such as /page2 instead of /2, you can modify the params object to include a "page" key with the desired format. For example:
-
-### 未來更新
-
-1. 改成 MDX 加入 youtube links (remark-frontmatter)
+以上是簡單介紹，有任何問題歡迎寄信給我:)
