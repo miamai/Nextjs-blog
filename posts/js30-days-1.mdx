@@ -31,9 +31,9 @@ image: '/images/projects/js30.PNG'
 
 - `document.documentElement.style.setProperty(propertyName, value, priority)`
 
--Tips
+- Tips
 
-- input element 設置 name 指定變更的 Css variables；data-sizing 指定 variables 單位(px)
+  - input element 設置 name 指定變更的 Css variables；data-sizing 指定 variables 單位(px)
 
 ## 04 - Array Cardio Day 1
 
@@ -56,7 +56,7 @@ image: '/images/projects/js30.PNG'
   - `push()`
   - spread syntax
 
-運用 fetch()發送 HTTP 請求: i.獲取返回 promise 對象 ii.解析 json 數據 iii.存入數據` 。 利用`push`將data存入cities數組中，原本取出的 data 是數組，直接`cities.push(data)`會 nested，因此將 data spread 後再存入
+運用 fetch()發送 HTTP 請求: i.獲取返回 promise 對象 ii.解析 json 數據 iii.存入數據。 利用`push`將 data 存入 cities 數組中，原本取出的 data 是數組，直接`cities.push(data)`會 nested，因此將 data spread 後再存入
 
 ```javascript
 fetch(endpoint)
@@ -81,7 +81,7 @@ fetch(endpoint)
 - `moveTo()`：（下次）繪製的起點
 - `lineTo()`：路徑終點
 
-在繪製過程中，線是由點所連起來的，但在初始狀態 lastX=0 lastY=0 下起始相同，因此滑動過程會變為扇形，因此設定`[lastX, lastY] = [e.offsetX, e.offsetY];`讓`lastX`和 `offsetX` 的值相等，呈現繪製一個個點，看起來線才是流動的
+在繪製過程中，線是由點所連起來的，但在初始狀態 lastX=0 lastY=0 下起始相同，因此滑動過程會變為扇形，因此設定`[lastX, lastY] = [e.offsetX, e.offsetY]`，讓`lastX`和 `offsetX` 的值相等，呈現繪製一個個點，看起來線才是流動的
 
 ```javascript
 function draw(e) {
@@ -125,9 +125,9 @@ function handleCheck(e) {
 
 - video node 操作
 
-  - `video.pause`:影片是否暫停
-  - `video.play()`:播放影片
-  - `video.pause()`:暫停影片
+  - `video.pause` : 影片是否暫停
+  - `video.play()` : 播放影片
+  - `video.pause()` : 暫停影片
 
 - `toggle.textContent` : 改變播放圖案
 
@@ -177,7 +177,7 @@ ranges.forEach((range) => range.addEventListener('change', handleRangeUpdate));
 
 ## 12 - Key Sequence Detection
 
-- `splice()`:截取數組，保持最大長度為 secretCode
+- `splice()` : 截取數組，保持最大長度為 secretCode
 
 ```javascript
 //若start為負，從最後一個元素往前數(-1開始)
@@ -189,5 +189,5 @@ pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
 - `debounce` : 降低互動事件頻繁發生 [延伸:debounce & throttle 差異](https://ithelp.ithome.com.tw/articles/10222749)
 - 涉及頁面尺寸屬性
   - `window.scrollY` : 頁面從頂部開始滾動過後的像素值
-  - `window.innerHeight`:viewport 部分的高度
+  - `window.innerHeight` : viewport 部分的高度
   - `element.offsetTop` : 當前元素頂部相對於 offsetParent 元素頂部的距離

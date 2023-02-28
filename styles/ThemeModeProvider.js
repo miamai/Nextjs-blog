@@ -16,7 +16,6 @@ export const ThemeModeProvider = (props) => {
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
-        console.log('有按到');
         setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
       },
       mode,
@@ -50,33 +49,6 @@ export const ThemeModeProvider = (props) => {
                   textGray: '#bdbdbd',
                 },
               }),
-          // ...(mode === 'light'
-          //   ? {
-          //       primary: {
-          //         main: '#E1306C',
-          //         light: 'rgb(231, 89, 137)',
-          //         dark: 'rgb(157, 33, 75)',
-          //       },
-          //       secondary: {
-          //         main: '#405DE6',
-          //         light: 'rgb(102, 125, 235)',
-          //         dark: 'rgb(44, 65, 161)',
-          //       },
-          //     }
-          //   : {
-          //       primary: {
-          //         main: 'rgb(231, 89, 137)',
-          //         light: 'rgb(235, 122, 160)',
-          //         dark: 'rgb(161, 62, 95)',
-          //       },
-          //       secondary: {
-          //         main: 'rgb(102, 125, 235)',
-          //         light: 'rgb(132, 151, 239)',
-          //         dark: 'rgb(71, 87, 164)',
-          //       },
-          //     }),
-          // Default theme viewer
-          // https://mui.com/material-ui/customization/dark-mode/
         },
         typography: {
           fontFamily: [
@@ -95,9 +67,7 @@ export const ThemeModeProvider = (props) => {
           MuiAppBar: {
             styleOverrides: {
               root: {
-                boxShadow:
-                  // '0px 2px 4px -1px rgb(0 0 0 / 10%), 0px 4px 5px 0px rgb(0 0 0 / 2%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
-                  '0 4px 2px -2px rgb(0 0 0 / 15%)',
+                boxShadow: '0 4px 2px -2px rgb(0 0 0 / 15%)',
               },
             },
           },

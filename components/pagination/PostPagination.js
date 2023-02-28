@@ -5,8 +5,6 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const PostPagination = ({ nextPost, prevPost }) => {
-  console.log(nextPost);
-  console.log(prevPost);
   const items = [
     {
       startIcon: <ArrowBackIcon />,

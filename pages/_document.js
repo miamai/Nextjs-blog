@@ -19,7 +19,7 @@ export default function Document() {
         />
         <link
           rel='stylesheet'
-          href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/github-dark.min.css'
+          href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/github.min.css'
         ></link>
       </Head>
       <body style={{ margin: 0, padding: 0 }}>
