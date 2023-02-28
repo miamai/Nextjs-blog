@@ -80,7 +80,11 @@ const Header = (props) => {
       <AppBar
         component='nav'
         position='sticky'
-        sx={{ backgroundColor: 'background.default' }}
+        sx={{
+          bgcolor: 'background.default',
+          // maxWidth: '1200px',
+          margin: '0 auto',
+        }}
       >
         <Toolbar>
           <IconButton

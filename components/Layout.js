@@ -14,9 +14,7 @@ export default function Layout({ children, home }) {
   return (
     <Box
       sx={{
-        maxWidth: '1200px',
         minHeight: '100vh',
-        m: '0 auto',
         display: 'flex',
         flexDirection: 'column',
         bgcolor: 'background.default',
@@ -24,8 +22,11 @@ export default function Layout({ children, home }) {
       }}
     >
       <Header />
-      <Box sx={{ ...defaultPadding, flexGrow: 1 }}>
-        <main>{children}</main>
+      <Box
+        component='main'
+        sx={{ ...defaultPadding, flexGrow: 1, maxWidth: '1200px', m: '0 auto' }}
+      >
+        <div>{children}</div>
 
         {!home && (
           <Box maxWidth='720px' m='0 auto' pt='16px'>
@@ -40,7 +41,7 @@ export default function Layout({ children, home }) {
           </Box>
         )}
       </Box>
-      <Box sx={defaultPadding}>
+      <Box component='footer' sx={{ ...defaultPadding }}>
         <Footer />
       </Box>
     </Box>

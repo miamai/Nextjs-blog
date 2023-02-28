@@ -10,6 +10,8 @@ const Footer = () => {
   return (
     <Box
       sx={{
+        maxWidth: '1200px',
+        m: '0 auto',
         pt: '40px',
         pb: '40px',
         display: 'flex',
