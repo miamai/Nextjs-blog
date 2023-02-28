@@ -9,11 +9,15 @@ import {
   BlueText,
   PinkText,
   Caption,
+  InlineCode,
+  PreCode,
 } from '../../styles/PostComponents';
 import PostPagination from '../../components/pagination/PostPagination';
 
 const components = {
   img: ResponsiveImage,
+  code: ({ children }) => <InlineCode>{children}</InlineCode>,
+  pre: ({ children }) => <PreCode>{children}</PreCode>,
   BlueText,
   PinkText,
   Caption,

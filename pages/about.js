@@ -6,6 +6,12 @@ import { MDXRemote } from 'next-mdx-remote';
 import { Typography, Box, Divider } from '@mui/material';
 import Layout from '../components/Layout';
 import SEO, { defaultSiteMeta } from '../components/SEO';
+import { InlineCode, PreCode } from '../styles/PostComponents';
+
+const components = {
+  code: ({ children }) => <InlineCode>{children}</InlineCode>,
+  pre: ({ children }) => <PreCode>{children}</PreCode>,
+};
 
 async function getAboutData() {
   const filePath = path.join(process.cwd(), 'about.mdx');
@@ -40,7 +46,10 @@ const About = ({ aboutFile }) => {
           </Typography>
           <Divider />
           <Typography component={'div'}>
-            <MDXRemote compiledSource={aboutFile.mdxContent} />
+            <MDXRemote
+              compiledSource={aboutFile.mdxContent}
+              components={components}
+            />
           </Typography>
         </Box>
       </Layout>

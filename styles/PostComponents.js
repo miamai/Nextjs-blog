@@ -36,3 +36,24 @@ export const Caption = ({ children }) => (
     {children}
   </Typography>
 );
+
+export const InlineCode = ({ children }) => (
+  <code
+    style={{
+      backgroundColor: ' #f5f5f5',
+      color: 'black',
+      padding: '2px 5px',
+      borderRadius: '6px',
+    }}
+  >
+    {children}
+  </code>
+);
+
+export const PreCode = ({ children }) => (
+  <pre
+    style={{ backgroundColor: '#f5f5f5', padding: '10px', overflowX: 'auto' }}
+  >
+    {children}
+  </pre>
+);
