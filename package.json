@@ -22,7 +22,6 @@
     "react-dom": "18.2.0",
     "rehype-highlight": "^6.0.0",
     "sanitize-html": "^2.10.0",
-    "strip-markdown": "^5.0.0",
     "typewriter-effect": "^2.19.0"
   }
 }
