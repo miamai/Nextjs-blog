@@ -1,13 +1,16 @@
 import { Box, Typography } from '@mui/material';
+import Image from 'next/image';
 
 export const ResponsiveImage = (props) => (
-  <div style={{ display: 'flex', justifyContent: 'center' }}>
-    <img
-      src={props.src}
-      alt={props.alt}
-      style={{ maxWidth: '100%', width: 'auto', maxHeight: '500px' }}
-    />
-  </div>
+  <Box
+    sx={{
+      position: 'relative',
+      width: 'auto',
+      height: ['250px', '400px'],
+    }}
+  >
+    <Image src={props.src} alt={props.alt} fill objectFit='contain' />
+  </Box>
 );
 
 export const BlueText = ({ children }) => (
